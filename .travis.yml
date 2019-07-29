@@ -31,9 +31,17 @@ jobs:
       before_deploy:
         - echo "Deploying $RELEASE_TAG to Cloud Foundry"
       deploy:
-        provider: cloudfoundry
-        api: $CF_API_URL
-        username: $CF_USERNAME
-        password: $CF_PASSWORD
-        organization: $CF_ORG
-        space: $CF_SPACE
+        if: branch = master
+          provider: cloudfoundry
+          api: $CF_API_URL
+          username: $CF_USERNAME
+          password: $CF_PASSWORD
+          organization: $CF_ORG
+          space: $CF_SPACE
+        else: branch = dev
+          provider: cloudfoundry
+          api: $CF_API_URL
+          username: $CF_USERNAME
+          password: $CF_PASSWORD
+          organization: $CF_ORG
+          space: $CF_SPACE
