@@ -11,7 +11,8 @@ jobs:
   include:
     - stage: build and publish
       language: java
-      jdk: openjdk11
+      jdk: openjdk8
+      install: skip
       script: ./gradlew clean build
       before_deploy:
         - git config --local user.name "Travis CI"
