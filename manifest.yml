@@ -6,5 +6,4 @@ applications:
     - route: pal-tracker2.apps.evans.pal.pivotal.io
     env:
       WELCOME_MESSAGE: Hello from the review environment
-      SPRING_DATASOURCE_URL: jdbc:mysql://q-n3s3y1.q-g17145.bosh:3306/service_instance_db?user=5d6132332fb640d380d33c6ce3d2184b&password=8rx5fab110grg6pz&useSSL=false
       JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
