@@ -1,12 +1,9 @@
 package io.pivotal.pal.tracker;
 
-import org.springframework.stereotype.Repository;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
-public class InMemoryTimeEntryRepository {
+public class InMemoryTimeEntryRepository implements TimeEntryRepository {
 
     List<TimeEntry> list = new ArrayList<>();
     private long id = 1L;
@@ -21,8 +18,8 @@ public class InMemoryTimeEntryRepository {
     }
 
     public TimeEntry find(long id) {
-        for(TimeEntry row : list){
-            if(row.getId() == id){
+        for (TimeEntry row : list) {
+            if (row.getId() == id) {
                 return row;
             }
         }
@@ -35,13 +32,12 @@ public class InMemoryTimeEntryRepository {
 
     public TimeEntry update(long id, TimeEntry timeEntry) {
         TimeEntry old = this.find(id);
-        if(old != null){
+        if (old != null) {
             list.remove(old);
             timeEntry.setId(id);
             list.add(timeEntry);
             return timeEntry;
-        }
-        else{
+        } else {
             return null;
         }
     }
